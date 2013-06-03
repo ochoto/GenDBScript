@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GenDBScript
 {
-    class Program
+    class GenDBScript
     {
         static void Main(string[] args)
         {
