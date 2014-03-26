@@ -25,15 +25,21 @@ namespace GenDBScript {
 
             //Transfer t = new Transfer(d);
             Transfer t = new Transfer(d);
-
+            t.CopyData = false;              // Nos aseguramos de evitar los datos
+            t.CopySchema = true;
+            t.CopyAllObjects = true;
+            //t.Options.ScriptDrops = true;   // Creamos script que sirva para recrear
+            t.DropDestinationObjectsFirst = true;
+            t.Options.LoginSid = true;
+            t.Options.Indexes = true;
+            t.Options.WithDependencies = true;
+            String fSal = d.Name + "_" + DateTime.Now.ToString("yyyyMMddHHmm") + ".sql";
             StringCollection crtDb = t.ScriptTransfer();
             foreach (String crtS in crtDb) {
                 System.Console.WriteLine(crtS);
             }
 
             System.Console.ReadLine();
-
-
         }
     }
 }
